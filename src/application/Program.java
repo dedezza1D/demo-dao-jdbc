@@ -11,32 +11,38 @@ import model.entities.Seller;
 public class Program {
 
 	public static void main(String[] args) {
-		
+
 		SellerDao sellerDao = DaoFactory.createSellerDao();
-		
+
 		System.out.println("====== Test 1: seller findById ========");
 		Seller Findseller = sellerDao.findById(3);
-		
+
 		System.out.println(Findseller);
-		
+
 		System.out.println("\n====== Test 2: seller findByDepartment ========");
 		Department department = new Department(2, null);
 		List<Seller> list = sellerDao.findByDepartment(department);
 		for (Seller obj : list) {
 			System.out.println(obj);
 		}
-		
+
 		System.out.println("\n====== Test 3: seller findAll ========");
 		list = sellerDao.findAll();
 		for (Seller obj : list) {
 			System.out.println(obj);
-		
-		System.out.println("\n====== Test 4: seller insert ========");
-	Seller seller = new Seller(null, "Greg", "greg@gmail.com", new Date(0), 4000.00, department);
-	sellerDao.insert(seller);
-	System.out.println("Inserted! Nwe id: " + seller.getId());
-		
 
-	}
+			System.out.println("\n====== Test 4: seller insert ========");
+			Seller seller = new Seller(null, "Greg", "greg@gmail.com", new Date(0), 4000.00, department);
+			sellerDao.insert(seller);
+			System.out.println("Inserted! Nwe id: " + seller.getId());
+
+			System.out.println("\n====== Test 4: seller insert ========");
+			seller = sellerDao.findById(1);
+			seller.setName("Martha Waine");
+			sellerDao.update(seller);
+			System.out.println("Update completed! ");
+			
+
+		}
 	}
 }

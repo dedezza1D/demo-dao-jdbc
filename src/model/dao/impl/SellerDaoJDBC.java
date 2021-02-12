@@ -107,9 +107,6 @@ public class SellerDaoJDBC implements SellerDao{
 			DB.closeStatement(st);
 		}
 	}
-		
-	}
-
 	@Override
 	public Seller findById(Integer id) {
 	
@@ -234,7 +231,7 @@ public class SellerDaoJDBC implements SellerDao{
 		}
 		finally {
 			DB.closeStatement(st);
-			DB.closeResultSet(rs)	;
+			DB.closeResultSet(rs);
 		}
 		
 	}
